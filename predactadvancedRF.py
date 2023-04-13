@@ -158,11 +158,6 @@ Y = Y.to_frame()
 Y.loc[Y['act'] == 'leave', 'act'] = 1
 Y.loc[Y['act'] != 1, 'act'] = 0
 
-# Encode the categorical columns of the copy of the dataset
-#le = LabelEncoder()
-#for col in ['V01_1', 'V01_2', 'V02_1', 'V02_2', 'V03_1', 'V03_2', 'V04', 'V05', 'V06_1', 'V06_2', 'V07_1', 'V07_2', 'prev_act']:
-    #merged_dataset2[col] = le.fit_transform(merged_dataset2[col])
-
 #define the feature columns merged_dataset2 without target column 'act'
 merged_dataset2 = merged_dataset2.drop(['act'], axis=1).copy()
 
@@ -184,7 +179,7 @@ X_train, y_train = sm.fit_resample(X_train, y_train)
 
 # Define the parameter grid
 param_grid = {
-    'n_estimators': [160], #150 (best)
+    'n_estimators': [160], #150 (best) maar willen vergelijken met tabular data
     'max_depth': [6], #9 (best)
     'min_samples_split': [2],
     'class_weight': ['balanced']
