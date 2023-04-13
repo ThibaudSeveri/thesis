@@ -207,6 +207,7 @@ rfc_best = RandomForestClassifier(n_estimators=grid_search.best_params_['n_estim
 
 rfc_best.fit(X_train, y_train)
 
+# predict the probability estimates of the positive class label for each instance
 y_train_pred = rfc_best.predict_proba(X_train)[:, 1]
 y_test_pred = rfc_best.predict_proba(X_test)[:, 1]
 
